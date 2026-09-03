@@ -188,7 +188,7 @@ export const defaultServicesPage: ServicesPage = {
 export const defaultContactPage: ContactPage = {
   heading: "Reach out when you're ready",
   intro:
-    "Email, call, or use the form below — whichever feels easiest. There's no wrong way to start, and no information you're required to share yet.",
+    "Email or call, whichever feels easiest. There's no wrong way to start, and no information you're required to share yet.",
   email: "hello@example.com",
   phone: "(555) 771-0439",
   addressLine: "214 Water St, Port Townsend, WA",
