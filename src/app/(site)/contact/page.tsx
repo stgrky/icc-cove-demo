@@ -176,7 +176,7 @@ export default async function ContactPageRoute() {
         </Container>
       </section>
 
-      {/* ── FAQ ── standard section, this template onward (see FAQSection.tsx) ── */}
+      {/* ── FAQ ── bundled with the SEO Setup add-on only (see FAQSection.tsx) ── */}
       <FAQSection heading={contact.faqHeading} faqs={contact.faqs} />
 
       {/* ── SOFT CROSSLINK ── */}
