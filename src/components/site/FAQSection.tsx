@@ -16,18 +16,27 @@ type Props = {
 };
 
 /**
- * FAQ — standard section going forward on every ICC template, starting
- * with Cove (per product decision, 2026-09). Deliberately page-agnostic:
- * takes plain `heading` + `faqs` props rather than a whole page/document
- * type, so it can be dropped onto any page's Sanity schema (Contact here;
- * Services or Home elsewhere) without the component itself caring where
- * the data comes from. Copy this file + the {question, answer} array
- * pattern in schemas/*.ts into the next template — nothing here is
- * Cove-specific except the visual treatment.
+ * FAQ — bundled exclusively with the SEO Setup add-on ($100), not a
+ * standard feature on any template (corrected 2026-09-05 from the earlier
+ * "standard on every build starting with Cove" decision — see
+ * ims-ops/TEMPLATES.md). Deliberately page-agnostic: takes plain
+ * `heading` + `faqs` props rather than a whole page/document type, so it
+ * can be dropped onto any page's Sanity schema (Contact here; Services or
+ * Home elsewhere) without the component itself caring where the data
+ * comes from. Copy this file + the {question, answer} array pattern in
+ * schemas/*.ts into the next template when a client buys the add-on —
+ * nothing here is Cove-specific except the visual treatment.
  *
  * Cove's treatment: soft glass panels (.mist-card), no ink borders or
  * offset shadows (contrast Anchor's FaqAccordion, which this supersedes
  * for new builds).
+ *
+ * Emits FAQPage JSON-LD alongside the visible accordion. Google
+ * deprecated the visual FAQ rich result in search on 2026-05-07 (already
+ * gov/health-only since 2023-08), so this markup no longer produces an
+ * expandable search snippet for anyone — Google states it still uses the
+ * data to understand page content. Describe the add-on on that basis, not
+ * as a search-appearance feature.
  */
 export function FAQSection({ heading, faqs, eyebrow = "Questions people usually have" }: Props) {
   const [open, setOpen] = useState<number | null>(0);
@@ -35,8 +44,24 @@ export function FAQSection({ heading, faqs, eyebrow = "Questions people usually 
   const items = faqs ?? [];
   if (items.length === 0) return null;
 
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items
+      .filter((faq) => faq.question && faq.answer)
+      .map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+  };
+
   return (
     <section className="bg-[var(--color-background)] py-20 md:py-28">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <Container>
         <div className="mx-auto max-w-3xl">
           <Reveal>
