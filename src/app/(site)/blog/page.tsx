@@ -10,6 +10,7 @@ import { SanityImg } from "@/components/SanityImg";
 import { demoBlogIndex } from "@/lib/demo-posts";
 import { formatDateLong } from "@/lib/format";
 import { safeFetch } from "@/sanity/client";
+import { isSanityConfigured } from "@/sanity/env";
 import { blogIndexQuery } from "@/sanity/queries";
 import type { BlogIndexResult } from "@/sanity/types";
 
@@ -41,7 +42,7 @@ export default async function BlogIndexRoute({ searchParams }: BlogPageProps) {
   const { posts, total } = await safeFetch<BlogIndexResult>(
     blogIndexQuery,
     { start, end },
-    demoBlogIndex(start, end)
+    isSanityConfigured ? { posts: [], total: 0 } : demoBlogIndex(start, end)
   );
 
   const totalPages = Math.max(1, Math.ceil(total / POSTS_PER_PAGE));
