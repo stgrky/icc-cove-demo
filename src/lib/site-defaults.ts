@@ -197,38 +197,11 @@ export const defaultContactPage: ContactPage = {
     { day: "Fri", time: "9:00 am – 1:00 pm" },
   ],
   faqHeading: "Questions people usually have",
-  faqs: [
-    {
-      question: "What happens in a first session?",
-      answer:
-        "Mostly just talking, at whatever pace feels manageable. We'll cover the practical things — confidentiality, how scheduling works — and then I'll ask what brought you here. There's no form to fill out about your history beforehand, and nothing you're required to say in week one. We go as slowly as you need.",
-    },
-    {
-      question: "Do you take insurance?",
-      answer:
-        "I'm currently out-of-network, and I provide a superbill you can submit for possible reimbursement — many PPO plans cover 40–80% of the fee this way. I also hold a small number of sliding-scale spots; just ask, no explanation required.",
-    },
-    {
-      question: "How long is each session, and how often do we meet?",
-      answer:
-        "Fifty minutes, weekly to start. Once things feel steadier, many people move to every other week. We'll talk about pacing honestly and it can always change — this is never fixed in advance.",
-    },
-    {
-      question: "What if I don't know what to say?",
-      answer:
-        "That's a completely normal way to begin, and it's not wasted time. Some of the most useful sessions start with 'I don't know where to start' — we can genuinely begin there. Silence is allowed too; I won't rush to fill it for you.",
-    },
-    {
-      question: "Is this actually trauma-informed, or is that just a word on the site?",
-      answer:
-        "It's the core of how I work, not a label. You set the pace, you're never asked to relive something before you're ready, and we pay close attention to what's happening in your body, not only what you're saying. If something feels like too much, we slow down or stop — that's the process working, not a disruption to it.",
-    },
-    {
-      question: "Do you offer telehealth, or is it in-person only?",
-      answer:
-        "Both. Sessions happen in the Port Townsend office or by video, and most clients mix the two depending on the week. Telehealth is available anywhere in Washington state.",
-    },
-  ],
+  // Empty on purpose. FAQ answers state a practice's own policies (insurance,
+  // location, confidentiality), so they must come from the client -- a seeded
+  // demo answer nearly shipped under a real therapist's name. Hidden-but-seeded
+  // content still reaches the page payload, so there is none to seed.
+  faqs: [],
 };
 
 // Demo blog content (4 unhurried posts) — see src/lib/demo-posts.ts
