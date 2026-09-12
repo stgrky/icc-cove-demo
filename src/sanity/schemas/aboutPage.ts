@@ -37,6 +37,27 @@ export const aboutPage = defineType({
       of: [{ type: "string" }],
       description: "Degrees, licenses, certifications.",
     }),
+    defineField({
+      name: "credentialBadges",
+      title: "Credential badges",
+      type: "array",
+      description:
+        "Certification and membership logos (like a PSI or EMDRIA badge), shown centred below your credentials. Press \"Add item\" to upload another; use the ⋮ menu to remove one. Upload them with transparent backgrounds — a badge saved as a JPEG carries a white box behind it.",
+      of: [
+        {
+          type: "image",
+          fields: [
+            {
+              name: "alt",
+              type: "string",
+              title: "What the badge is",
+              description:
+                "Describe it for people using screen readers, e.g. \"Postpartum Support International — PMH-C certified\".",
+            },
+          ],
+        },
+      ],
+    }),
   ],
   preview: { prepare: () => ({ title: "About Page" }) },
 });

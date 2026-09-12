@@ -5,6 +5,7 @@ import { Container } from "@/components/Container";
 import { Reveal } from "@/components/motion/Reveal";
 import { PortableTextRenderer } from "@/components/PortableTextRenderer";
 import { AboutSticky } from "@/components/site/AboutSticky";
+import { CredentialBadges } from "@/components/site/CredentialBadges";
 import { defaultAboutPage } from "@/lib/site-defaults";
 import { safeFetch } from "@/sanity/client";
 import { aboutPageQuery } from "@/sanity/queries";
@@ -57,7 +58,14 @@ export default async function AboutPageRoute() {
 
       {/* ── CREDENTIALS ── */}
       {about.credentials?.length ? (
-        <section className="bg-[var(--color-background)] pb-20 md:pb-28">
+        <section
+          // When badges follow, the card hands most of its trailing space to
+          // them so the badge reads as attached to the credentials rather than
+          // marooned between two sections.
+          className={`bg-[var(--color-background)] ${
+            about.credentialBadges?.length ? "pb-10 md:pb-12" : "pb-20 md:pb-28"
+          }`}
+        >
           <Container>
             <Reveal>
               <div className="mist-card-accent mx-auto max-w-2xl p-8 md:p-10">
@@ -84,6 +92,9 @@ export default async function AboutPageRoute() {
           </Container>
         </section>
       ) : null}
+
+      {/* ── CREDENTIAL BADGES ── centred on their own, below the card ── */}
+      <CredentialBadges badges={about.credentialBadges} />
 
       {/* ── CLOSING CTA ── */}
       <section className="bg-[var(--color-surface)] py-20 md:py-28">

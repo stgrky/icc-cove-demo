@@ -108,6 +108,7 @@ export interface AboutPage {
   body?: PortableTextBlock[];
   portrait?: SanityImageWithAlt;
   credentials?: string[];
+  credentialBadges?: SanityImageWithAlt[];
 }
 
 export interface ServiceItem {

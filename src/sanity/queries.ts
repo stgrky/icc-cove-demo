@@ -62,7 +62,8 @@ export const aboutPageQuery = groq`*[_type == "aboutPage"][0]{
   intro,
   body,
   portrait,
-  credentials
+  credentials,
+  credentialBadges
 }`;
 
 export const servicesPageQuery = groq`*[_type == "servicesPage"][0]{
