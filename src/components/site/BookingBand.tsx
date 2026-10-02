@@ -61,7 +61,7 @@ export function BookingBand({ contact }: Props) {
           <Reveal delay={0.15}>
             <div className="flex flex-col items-start gap-4 md:items-end">
               <MagneticButton
-                href="/contact"
+                href="https://www.openheartcounselingatx.com/request-services.html"
                 className="mist-btn inline-flex items-center gap-3 bg-[var(--color-accent)] px-10 py-5 text-base font-medium text-white"
               >
                 Book a first session

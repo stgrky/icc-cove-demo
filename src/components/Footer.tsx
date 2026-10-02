@@ -46,26 +46,26 @@ export function Footer({ settings }: { settings: SiteSettings }) {
         <div className="space-y-2 text-sm text-[var(--color-muted)]">
           <p className="font-medium text-[var(--color-foreground)]">Site</p>
           <p>
-            <Link href="/about" className="hover:text-[var(--color-foreground)]">
+            <Link href="https://www.openheartcounselingatx.com/meettheteam.html" className="hover:text-[var(--color-foreground)]">
               About
             </Link>
           </p>
           <p>
             <Link
-              href="/services"
+              href="https://www.openheartcounselingatx.com/"
               className="hover:text-[var(--color-foreground)]"
             >
               Services
             </Link>
           </p>
           <p>
-            <Link href="/blog" className="hover:text-[var(--color-foreground)]">
+            <Link href="https://www.openheartcounselingatx.com/open-heart-discussions.html" className="hover:text-[var(--color-foreground)]">
               Blog
             </Link>
           </p>
           <p>
             <Link
-              href="/contact"
+              href="https://www.openheartcounselingatx.com/request-services.html"
               className="hover:text-[var(--color-foreground)]"
             >
               Contact

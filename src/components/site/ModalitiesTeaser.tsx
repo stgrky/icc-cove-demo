@@ -69,7 +69,7 @@ export function ModalitiesTeaser({ services }: Props) {
 
         <Reveal delay={0.3}>
           <Link
-            href="/services"
+            href="https://www.openheartcounselingatx.com/"
             className="mt-10 inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent-strong)] transition-colors hover:text-[var(--color-foreground)]"
           >
             See every way we can work together

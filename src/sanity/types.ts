@@ -10,6 +10,8 @@ export type SanityImageWithAlt = SanityImage & {
 };
 
 export type PaletteName =
+  /** preview/open-heart-counseling branch only */
+  | "openheart"
   | "mist"
   | "sage"
   | "navy"

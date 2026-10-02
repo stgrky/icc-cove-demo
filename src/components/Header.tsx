@@ -5,12 +5,21 @@ import type { SanityImageWithAlt } from "@/sanity/types";
 import { Container } from "./Container";
 import { SanityImg } from "./SanityImg";
 
+/**
+ * PREVIEW BRANCH — homepage mockup only.
+ *
+ * The other routes still hold Cove's demo persona (Dana Okafor, Port Townsend),
+ * so linking to them from a page carrying this prospect's name would show her
+ * someone else's practice. Anything that isn't the homepage points at her own
+ * live site instead.
+ */
+const HER_SITE = "https://www.openheartcounselingatx.com";
+
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/blog", label: "Blog" },
-  { href: "/contact", label: "Contact" },
+  { href: `${HER_SITE}/meettheteam.html`, label: "Meet the Team" },
+  { href: `${HER_SITE}/`, label: "Services" },
+  { href: `${HER_SITE}/request-services.html`, label: "Request Services" },
 ];
 
 type Props = {
@@ -18,7 +27,7 @@ type Props = {
   logo?: SanityImageWithAlt;
 };
 
-export function Header({ practiceName, logo }: Props) {
+export function Header({ practiceName }: Props) {
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-subtle)]/60 bg-[var(--color-background)]/85 backdrop-blur">
       <Container className="flex items-center justify-between gap-6 py-5">
@@ -27,19 +36,22 @@ export function Header({ practiceName, logo }: Props) {
           className="flex items-center text-[var(--color-foreground)]"
           aria-label={practiceName}
         >
-          {logo?.asset ? (
-            <SanityImg
-              image={logo}
-              alt={logo.alt ?? practiceName}
-              width={320}
-              height={80}
-              className="h-9 w-auto object-contain md:h-10"
+          {/* PREVIEW BRANCH: her own mark, lifted from her site, beside the
+              practice name. Hers is a 100px circle, so it's shown small and
+              paired with type rather than stretched to a header logo. */}
+          <span className="flex items-center gap-3">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/prospect/logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="h-9 w-9 rounded-full object-contain md:h-10 md:w-10"
             />
-          ) : (
-            <span className="font-serif text-xl tracking-tight">
+            <span className="font-serif text-lg leading-tight tracking-tight md:text-xl">
               {practiceName}
             </span>
-          )}
+          </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm md:flex">
           {NAV_LINKS.map((link) => (
@@ -53,7 +65,7 @@ export function Header({ practiceName, logo }: Props) {
           ))}
         </nav>
         <Link
-          href="/contact"
+          href="https://www.openheartcounselingatx.com/request-services.html"
           className="hidden rounded-full bg-[var(--color-accent)] px-4 py-2 text-sm text-white transition hover:bg-[var(--color-accent-strong)] md:inline-flex"
         >
           Book a consult

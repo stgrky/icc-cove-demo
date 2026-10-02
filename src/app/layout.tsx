@@ -13,10 +13,9 @@ import {
   Plus_Jakarta_Sans,
 } from "next/font/google";
 
-import { defaultSiteSettings } from "@/lib/site-defaults";
-import { safeFetch } from "@/sanity/client";
+// PREVIEW BRANCH: a sales mockup for Open Heart Counseling of Austin.
+import { prospectSettings } from "@/lib/prospect-preview";
 import { urlFor } from "@/sanity/image";
-import { siteSettingsQuery } from "@/sanity/queries";
 import type { SiteSettings } from "@/sanity/types";
 
 import "./globals.css";
@@ -117,11 +116,8 @@ const fontVariables = [
 // reflect whatever the therapist publishes in Studio. Falls back to defaults
 // when Sanity is unreachable or empty.
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await safeFetch<SiteSettings>(
-    siteSettingsQuery,
-    {},
-    defaultSiteSettings
-  );
+  // PREVIEW BRANCH: the prospect's details, not Sanity's.
+  const settings = prospectSettings;
 
   const practiceName = settings.practiceName ?? "Therapy Practice";
   const description =
@@ -143,22 +139,24 @@ export async function generateMetadata(): Promise<Metadata> {
           icon: [{ url: faviconUrl, sizes: "any" }],
           apple: [{ url: faviconUrl }],
         }
-      : undefined,
+      : { icon: [{ url: "/prospect/logo.png", sizes: "any" }] },
+    // PREVIEW BRANCH: a sales mockup carrying a real practice's name must
+    // never appear in search results — not under her name, and not as a
+    // duplicate of her real site.
+    robots: {
+      index: false,
+      follow: false,
+      googleBot: { index: false, follow: false },
+    },
   };
 }
 
 export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // Active theme is data-driven: the palette + font pairing chosen in Sanity
-  // set attributes on <html>, which globals.css maps to the --p-* / --f-*
-  // layers. Unknown/missing values fall through to the Sage + Cormorant
-  // defaults defined in :root.
-  const settings = await safeFetch<SiteSettings>(
-    siteSettingsQuery,
-    {},
-    defaultSiteSettings
-  );
+  // PREVIEW BRANCH: palette and fonts come from the prospect file, so <html>
+  // carries her teal without anything being read from or written to Sanity.
+  const settings = prospectSettings;
   const palette = settings.palette ?? "mist";
   const fontPairing = settings.fontPairing ?? "petrona";
 

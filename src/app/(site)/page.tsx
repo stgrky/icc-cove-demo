@@ -11,54 +11,27 @@ import { StickyAbout } from "@/components/site/StickyAbout";
 import { TestimonialRotator } from "@/components/site/TestimonialRotator";
 import { TrustStrip } from "@/components/site/TrustStrip";
 import { WhatToExpect } from "@/components/site/WhatToExpect";
+// PREVIEW BRANCH: every section below is fed from the prospect file instead of
+// Sanity, so this page makes no request to Cove's dataset at all.
 import {
-  defaultContactPage,
-  defaultHomePage,
-  defaultPosts,
-  defaultServicesPage,
-  defaultTestimonials,
-} from "@/lib/site-defaults";
-import { safeFetch } from "@/sanity/client";
-import {
-  allPostsQuery,
-  contactPageQuery,
-  featuredTestimonialsQuery,
-  homePageQuery,
-  servicesPageQuery,
-} from "@/sanity/queries";
-import type {
-  ContactPage,
-  HomePage,
-  PostListItem,
-  ServicesPage,
-  Testimonial,
-} from "@/sanity/types";
+  prospectContact,
+  prospectHome,
+  prospectServices,
+  prospectTestimonials,
+} from "@/lib/prospect-preview";
+import type { PostListItem } from "@/sanity/types";
 
-async function getHome() {
-  return safeFetch<HomePage>(homePageQuery, {}, defaultHomePage);
-}
 
-async function getRecentBlogPosts() {
-  const posts = await safeFetch<PostListItem[]>(allPostsQuery, {}, defaultPosts);
-  return posts.slice(0, 3);
-}
-
-async function getTestimonials() {
-  return safeFetch<Testimonial[]>(
-    featuredTestimonialsQuery,
-    {},
-    defaultTestimonials
-  );
-}
 
 export default async function HomePageRoute() {
   const [home, services, contact, recentPosts, testimonials] =
     await Promise.all([
-      getHome(),
-      safeFetch<ServicesPage>(servicesPageQuery, {}, defaultServicesPage),
-      safeFetch<ContactPage>(contactPageQuery, {}, defaultContactPage),
-      getRecentBlogPosts(),
-      getTestimonials(),
+      Promise.resolve(prospectHome),
+      Promise.resolve(prospectServices),
+      Promise.resolve(prospectContact),
+      // No blog on a homepage mockup — she has no posts to show.
+      Promise.resolve([] as PostListItem[]),
+      Promise.resolve(prospectTestimonials),
     ]);
 
   return (

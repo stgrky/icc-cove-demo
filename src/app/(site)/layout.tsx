@@ -3,18 +3,21 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { SmoothScroll } from "@/components/motion/SmoothScroll";
 import { StickyCta } from "@/components/site/StickyCta";
-import { defaultAnnouncement, defaultSiteSettings } from "@/lib/site-defaults";
+import { defaultAnnouncement } from "@/lib/site-defaults";
+// PREVIEW BRANCH: the prospect's own details stand in for Sanity, so nothing
+// is written to Cove's dataset and the live demo is untouched.
+import { prospectSettings } from "@/lib/prospect-preview";
 import { safeFetch } from "@/sanity/client";
-import { announcementQuery, siteSettingsQuery } from "@/sanity/queries";
-import type { Announcement, SiteSettings } from "@/sanity/types";
+import { announcementQuery } from "@/sanity/queries";
+import type { Announcement } from "@/sanity/types";
 
 // Render every request fresh against Sanity so content edits in Studio
 // (publish/edit/delete) reflect on the live site immediately. The therapist
 // who owns this site should never need a developer to push an update.
 export const dynamic = "force-dynamic";
 
-async function getSiteSettings(): Promise<SiteSettings> {
-  return safeFetch<SiteSettings>(siteSettingsQuery, {}, defaultSiteSettings);
+async function getSiteSettings() {
+  return prospectSettings;
 }
 
 async function getAnnouncement(): Promise<Announcement> {

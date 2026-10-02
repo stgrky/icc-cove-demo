@@ -91,6 +91,24 @@
 /* Cove's pairing — a seafoam-blue-grey, cooler and more desaturated than
    Teal (Anchor) and further from purple than Lavender (Haven). Reads as
    still water rather than clinical blue or botanical green. */
+/* PREVIEW ONLY — Open Heart Counseling of Austin (branch
+ * preview/open-heart-counseling). Sampled from openheartcounselingatx.com:
+ * her links and headings are #3387A2 and her logo mark is #00C2CB. The logo
+ * cyan reaches only 2.19:1 against white, so white button text on it would be
+ * unreadable; the accent below is her own #3387A2 darkened to #2A7489 (5.31:1)
+ * and the cyan is kept as the soft tint, where contrast doesn't apply. Cove's
+ * neutrals are untouched, so the template still feels like Cove. */
+[data-palette="openheart"] {
+  --p-background: #f4f8f9;
+  --p-surface: #ffffff;
+  --p-foreground: #22313a;
+  --p-muted: #65818c;
+  --p-subtle: #d7e5e9;
+  --p-accent: #2a7489;
+  --p-accent-strong: #1f5a6b;
+  --p-accent-soft: #e2f1f3;
+}
+
 [data-palette="mist"] {
   --p-background: #f3f7f7;
   --p-surface: #ffffff;

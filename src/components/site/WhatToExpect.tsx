@@ -19,7 +19,7 @@ export function WhatToExpect({ heading, intro, steps }: Props) {
         <div className="max-w-2xl">
           <Reveal>
             <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-[var(--color-accent-strong)]">
-              The first few steps
+              Who we work with
             </p>
           </Reveal>
           {heading ? (
@@ -54,7 +54,8 @@ export function WhatToExpect({ heading, intro, steps }: Props) {
                   {step.icon ?? "•"}
                 </div>
                 <p className="mt-5 text-[11px] font-medium tracking-[0.22em] uppercase text-[var(--color-muted)]">
-                  Step {String(i + 1).padStart(2, "0")}
+                  {/* PREVIEW BRANCH: this section lists who she works with,
+                      not a sequence, so the step number is suppressed. */}
                 </p>
                 <h3 className="mt-2 font-serif text-xl leading-tight text-[var(--color-foreground)] md:text-[1.55rem]">
                   {step.title}

@@ -61,7 +61,7 @@ export function StickyAbout({ home }: Props) {
             ) : null}
             <Reveal delay={0.24}>
               <Link
-                href="/about"
+                href="https://www.openheartcounselingatx.com/meettheteam.html"
                 className="mt-8 inline-flex items-center gap-2 text-sm font-medium text-[var(--color-accent-strong)] transition-colors hover:text-[var(--color-foreground)]"
               >
                 Read more about my approach
