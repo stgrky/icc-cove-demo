@@ -99,8 +99,13 @@ export function CoveHero({ home }: Props) {
                     "linear-gradient(160deg, color-mix(in srgb, var(--color-background) 55%, transparent) 0%, color-mix(in srgb, var(--color-accent-soft) 45%, transparent) 100%)",
                 }}
               />
+              {/* The ripple is a fixed 230px, so it stays put while the panel
+                  shrinks — at tablet width it ends up dominating a band half
+                  its usual height. Scaled down with the panel instead. */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <TideRipple size={230} />
+                <div className="scale-[0.55] sm:scale-75 md:scale-100">
+                  <TideRipple size={230} />
+                </div>
               </div>
             </div>
           </Float>
