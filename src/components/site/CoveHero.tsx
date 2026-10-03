@@ -75,7 +75,7 @@ export function CoveHero({ home }: Props) {
 
         <div className="relative">
           <Float duration={11} distance={6}>
-            <div className="relative aspect-[10/11] w-full overflow-hidden rounded-[2.5rem]">
+            <div className="relative aspect-[3/2] max-h-[300px] w-full overflow-hidden rounded-[2.5rem] sm:max-h-[360px] md:aspect-[10/11] md:max-h-none">
               {hasImage ? (
                 <SanityImg
                   image={home.heroImage}
