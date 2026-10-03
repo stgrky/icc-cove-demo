@@ -181,8 +181,23 @@
     transform: translateY(-2px);
     box-shadow: 0 20px 40px -16px color-mix(in srgb, var(--color-accent-strong) 60%, transparent);
   }
-  /* soft field of blurred light — an ambient backdrop, never a sharp edge */
+  /* Soft field of blurred light — an ambient backdrop, never a sharp edge.
+   *
+   * The blur lives on a pseudo-element, not on .water-glow itself. `filter`
+   * blurs an element AND all of its children, so putting it on the element
+   * softened the headline, the phone number and the button of any section
+   * that used this class — which is every section that uses it for content
+   * rather than as a bare decorative div. */
   .water-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .water-glow::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
     background:
       radial-gradient(60% 55% at 30% 20%, color-mix(in srgb, var(--color-accent) 22%, transparent) 0%, transparent 70%),
       radial-gradient(50% 50% at 78% 65%, color-mix(in srgb, var(--color-accent-strong) 14%, transparent) 0%, transparent 70%);
