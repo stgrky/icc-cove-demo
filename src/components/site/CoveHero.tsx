@@ -73,9 +73,12 @@ export function CoveHero({ home }: Props) {
           </Reveal>
         </div>
 
-        <div className="relative">
+        {/* Decorative only — a blurred field with no information in it. On a
+            phone or tablet it cost a screenful of scrolling before the reader
+            reached anything useful, so below md it isn't rendered at all. */}
+        <div className="relative hidden md:block">
           <Float duration={11} distance={6}>
-            <div className="relative aspect-[3/2] max-h-[300px] w-full overflow-hidden rounded-[2.5rem] sm:max-h-[360px] md:aspect-[10/11] md:max-h-none">
+            <div className="relative aspect-[10/11] w-full overflow-hidden rounded-[2.5rem]">
               {hasImage ? (
                 <SanityImg
                   image={home.heroImage}
@@ -99,13 +102,8 @@ export function CoveHero({ home }: Props) {
                     "linear-gradient(160deg, color-mix(in srgb, var(--color-background) 55%, transparent) 0%, color-mix(in srgb, var(--color-accent-soft) 45%, transparent) 100%)",
                 }}
               />
-              {/* The ripple is a fixed 230px, so it stays put while the panel
-                  shrinks — at tablet width it ends up dominating a band half
-                  its usual height. Scaled down with the panel instead. */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="scale-[0.55] sm:scale-75 md:scale-100">
-                  <TideRipple size={230} />
-                </div>
+                <TideRipple size={230} />
               </div>
             </div>
           </Float>
