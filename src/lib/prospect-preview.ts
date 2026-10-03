@@ -49,10 +49,15 @@ export const prospectHome: HomePage = {
   // Verbatim from her grief and perinatal sections, joined.
   heroSubhead:
     "Trauma, perinatal mental health, grief and loss, teens and families. I will listen open-heartedly as you talk, as many times as you need. I am here to sit with you through this journey.",
+  // Cove blurs this panel heavily and sets concentric rings over it — on its
+  // own demo the subject is water, because that practice's whole identity is
+  // tidal. Here it's a warm, lamplit room: blurred, it reads as somewhere to
+  // sit down, which is what her work is about. The water version had nothing
+  // to attach to for a perinatal and grief practice in Oak Hill.
   heroImage: {
     demoUrl:
-      "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=1320&fit=crop&q=80",
-    alt: "Close ripples moving across dark water at dusk",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&h=1320&fit=crop&q=80",
+    alt: "A warm, lamplit sitting room with a soft chair and natural light",
   },
   primaryCta: { label: "Request services", href: CONTACT_URL },
   secondaryCta: { label: "Meet the team", href: CONTACT_URL },
