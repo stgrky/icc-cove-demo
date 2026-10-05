@@ -14,7 +14,7 @@ import type {
  * COVE — Stillness & Settling.
  * Demo persona: Tidewater Therapy / Dana Okafor, LMFT (fictional) —
  * trauma-informed, somatic therapy in Port Townsend, WA. Mist palette
- * (seafoam-blue-grey), soft-edged Petrona serif + calm Karla body. Where
+ * (seafoam-blue-gray), soft-edged Petrona serif + calm Karla body. Where
  * Haven is photography-led and Willow is line-art-led, Cove is built on
  * soft, blurred macro texture — nothing on the page is ever in sharp
  * focus. The signature mechanic (TideRipple) is ambient, external calm:
