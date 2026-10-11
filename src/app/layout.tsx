@@ -138,12 +138,6 @@ export async function generateMetadata(): Promise<Metadata> {
       template: `%s · ${practiceName}`,
     },
     description,
-    // Belt and braces with robots.ts: a crawler that ignores robots.txt still
-    // meets the meta tag. Same env gate, so both flip together.
-    robots:
-      process.env.ICC_ALLOW_INDEXING === "true"
-        ? undefined
-        : { index: false, follow: false },
     icons: faviconUrl
       ? {
           icon: [{ url: faviconUrl, sizes: "any" }],
