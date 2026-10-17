@@ -66,6 +66,9 @@ export interface HomePage {
   aboutTeaserHeading?: string;
   aboutTeaserBody?: string;
   aboutTeaserImage?: SanityImageWithAlt;
+  statementImage?: SanityImageWithAlt;
+  statement?: string;
+  statementAttribution?: string;
   pricingHeading?: string;
   pricingIntro?: string;
   sessionFee?: string;

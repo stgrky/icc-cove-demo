@@ -10,6 +10,7 @@ import { PricingBlock } from "@/components/site/PricingBlock";
 import { StickyAbout } from "@/components/site/StickyAbout";
 import { TestimonialRotator } from "@/components/site/TestimonialRotator";
 import { TrustStrip } from "@/components/site/TrustStrip";
+import { StillwaterBand } from "@/components/site/StillwaterBand";
 import { WhatToExpect } from "@/components/site/WhatToExpect";
 import {
   defaultContactPage,
@@ -69,6 +70,15 @@ export default async function HomePageRoute() {
 
       <ModalitiesTeaser services={services} />
 
+      <StillwaterBand
+
+        image={home.statementImage}
+
+        statement={home.statement}
+
+        attribution={home.statementAttribution}
+
+      />
       <WhatToExpect
         heading={home.whatToExpectHeading}
         intro={home.whatToExpectIntro}

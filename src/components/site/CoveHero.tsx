@@ -17,9 +17,15 @@ type Props = {
 /**
  * COVE structural signature — the tide hero. Where Haven's hero is a
  * full-bleed sharp photo and Willow's is generous negative space around a
- * line-art sprig, Cove's right panel is a heavily softened, blurred field
- * (real photography pushed through a CSS blur so nothing on it is ever in
- * sharp focus) with TideRipple's concentric rings settling at its center.
+ * line-art sprig, Cove's right panel is a photograph of still water with
+ * TideRipple's concentric rings settling at its centre.
+ *
+ * It used to be blurred to abstraction — `blur-2xl scale-125` plus a tint
+ * wash, so that nothing was ever in focus. The intent was atmosphere; the
+ * effect was a gradient blob that read as an unloaded placeholder, and it
+ * was the main reason this layout felt like a SaaS landing page rather than
+ * a therapy practice. The softness now comes from a light blur, the Float
+ * drift and the wash — not from hiding the picture.
  * The whole panel drifts a few px on Float — nothing here snaps or holds
  * a hard edge.
  */
@@ -73,9 +79,9 @@ export function CoveHero({ home }: Props) {
           </Reveal>
         </div>
 
-        {/* Decorative only — a blurred field with no information in it. On a
-            phone or tablet it cost a screenful of scrolling before the reader
-            reached anything useful, so below md it isn't rendered at all. */}
+        {/* Still decorative rather than informational, and still hidden below
+            md: on a phone it cost a screenful of scrolling before the reader
+            reached anything useful. */}
         <div className="relative hidden md:block">
           <Float duration={11} distance={6}>
             <div className="relative aspect-[10/11] w-full overflow-hidden rounded-[2.5rem]">
@@ -86,20 +92,21 @@ export function CoveHero({ home }: Props) {
                   width={1100}
                   height={1210}
                   priority
-                  className="h-full w-full scale-125 object-cover blur-2xl saturate-[1.15]"
+                  className="h-full w-full scale-[1.04] object-cover blur-[1.5px] saturate-[1.05]"
                   sizes="(min-width: 768px) 50vw, 100vw"
                 />
               ) : (
                 <div className="water-glow h-full w-full" style={{ background: "var(--color-accent-soft)" }} />
               )}
-              {/* tint wash — keeps the blurred photo from ever reading as
-                  a "real" sharp image trying to peek through */}
+              {/* Tint wash — ties the photograph to the palette and keeps
+                  the ripple legible over it. Lightened along with the blur;
+                  at its old strength it was doing most of the hiding. */}
               <div
                 aria-hidden
                 className="absolute inset-0"
                 style={{
                   background:
-                    "linear-gradient(160deg, color-mix(in srgb, var(--color-background) 55%, transparent) 0%, color-mix(in srgb, var(--color-accent-soft) 45%, transparent) 100%)",
+                    "linear-gradient(160deg, color-mix(in srgb, var(--color-background) 26%, transparent), color-mix(in srgb, var(--color-accent-soft) 22%, transparent))",
                 }}
               />
               <div className="absolute inset-0 flex items-center justify-center">

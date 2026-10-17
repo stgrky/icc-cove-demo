@@ -105,6 +105,31 @@ export const homePage = defineType({
       rows: 4,
     }),
     defineField({
+      name: "statementImage",
+      title: "Wide photograph across the page",
+      description:
+        "Optional. Runs edge to edge in the middle of the page with one sentence over it. Water, sky, a horizon \u2014 something with space in it. It is the one place a picture is the point rather than decoration, so it breaks up the run of cards either side.",
+      type: "image",
+      options: { hotspot: true },
+      fields: [
+        defineField({ name: "alt", title: "Describe the photo", type: "string" }),
+      ],
+    }),
+    defineField({
+      name: "statement",
+      title: "The sentence over that photograph",
+      description:
+        "One line, in your voice. Not a testimonial \u2014 those have their own section. Something true about how you work.",
+      type: "text",
+      rows: 3,
+    }),
+    defineField({
+      name: "statementAttribution",
+      title: "Small line under it (optional)",
+      description: 'e.g. "Dana Whitfield, LMHC".',
+      type: "string",
+    }),
+    defineField({
       name: "aboutTeaserImage",
       title: "About teaser image",
       type: "image",
