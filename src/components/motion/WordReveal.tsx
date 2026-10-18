@@ -11,7 +11,7 @@ type Props = {
   stagger?: number;
   /** Initial Y offset for each word, in px */
   distance?: number;
-  /** Whether to animate just once */
+  /** Retained for call-site compatibility; the reveal runs once on mount. */
   once?: boolean;
 };
 
@@ -25,7 +25,6 @@ export function WordReveal({
   className,
   stagger = 0.06,
   distance = 16,
-  once = true,
 }: Props) {
   const reduceMotion = useReducedMotion();
   const words = text.split(/\s+/).filter(Boolean);
@@ -38,8 +37,7 @@ export function WordReveal({
     <motion.span
       className={className}
       initial="hidden"
-      whileInView="visible"
-      viewport={{ once, margin: "-80px" }}
+      animate="visible"
       transition={{ staggerChildren: stagger }}
       aria-label={text}
     >

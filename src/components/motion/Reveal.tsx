@@ -19,6 +19,15 @@ type Props = {
   className?: string;
   /** Render as block; pass "inline-block" if needed inside text */
   as?: "div" | "span";
+  /**
+   * Animate on mount instead of on scroll into view.
+   *
+   * For anything above the fold. Viewport detection cannot help an element
+   * already on screen at load, and it can fail: Willow's hero was caught
+   * half-revealed in two browsers until something scrolled. Leave it false
+   * further down, where the scroll trigger is the point.
+   */
+  immediate?: boolean;
 };
 
 /**
@@ -33,6 +42,7 @@ export function Reveal({
   once = true,
   className,
   as = "div",
+  immediate = false,
 }: Props) {
   const reduceMotion = useReducedMotion();
   const Component = motion[as];
@@ -45,8 +55,12 @@ export function Reveal({
     <Component
       className={className}
       initial={{ opacity: 0, y: distance }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-80px" }}
+      {...(immediate
+        ? { animate: { opacity: 1, y: 0 } }
+        : {
+            whileInView: { opacity: 1, y: 0 },
+            viewport: { once, margin: "-80px" },
+          })}
       transition={{
         duration,
         delay,
